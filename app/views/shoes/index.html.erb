@@ -18,7 +18,11 @@
     <% @shoes.each do |shoe| %>
       <tr>
         <td><%= shoe.name %></td>
-        <td><%= shoe.picture %></td>
+        <td>
+          <a href="<%= shoe.picture_url %>">
+            <%= image_tag shoe.picture_url(:thumb) if shoe.picture? %>
+          </a>
+        </td>
         <td><%= shoe.designer %></td>
         <td><%= shoe.description %></td>
         <td><%= shoe.color %></td>

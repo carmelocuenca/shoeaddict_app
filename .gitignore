@@ -23,3 +23,5 @@ doc/
 .rvmrc
 .ruby-*
 .secret
+
+public/uploads
