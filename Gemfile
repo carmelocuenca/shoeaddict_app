@@ -50,7 +50,6 @@ end
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console'
-  gem 'bootstrap-sass', '~> 3.0'
   gem 'travis'
 end
 
@@ -60,4 +59,6 @@ group :production do
   gem 'rails_12factor'
 end
 
+gem 'bootstrap-sass', '~> 3.0'
 gem 'puma'
+gem 'carrierwave'
