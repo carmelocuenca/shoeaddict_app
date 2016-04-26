@@ -1,3 +1,18 @@
+<% unless @shoe.has_picture_upload? %>
+    <%= direct_upload_form_for(@shoe.picture) do |f| %>
+        <div class="field">
+          <%= f.label :picture %><br>
+          <%= f.file_field :picture %>
+        </div>
+        <div class="actions">
+          <%= f.submit 'Upload Picture'%>
+        </div>
+    <% end %>
+<% else %>
+    <%= "File \"#{File.basename(@shoe.picture_key)}\" has been uploaded to S3."%>
+<% end %>
+
+
 <%= form_for(@shoe, html: {:multipart => true}) do |f| %>
   <% if @shoe.errors.any? %>
     <div id="error_explanation">
@@ -15,10 +30,7 @@
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
-  <div class="field">
-    <%= f.label :picture %><br>
-    <%= f.file_field :picture %>
-  </div>
+
   <div class="field">
     <%= f.label :designer %><br>
     <%= f.text_field :designer %>
@@ -31,7 +43,11 @@
     <%= f.label :color %><br>
     <%= f.text_field :color %>
   </div>
-  <div class="actions">
+  <div>
+    <%= f.hidden_field :picture_key %>
+  </div>
+
+    <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
